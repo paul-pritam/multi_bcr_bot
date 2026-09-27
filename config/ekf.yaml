@@ -4,6 +4,7 @@
     frequency: 30.0
     two_d_mode: true
     publish_tf: true
+    transform_tolerance: 0.2
     
     map_frame: map
     odom_frame: odom
@@ -24,4 +25,4 @@
                   false, false, false,
                   false, false, true,
                   true, false, false]
-    imu0_differential: false
+    imu0_differential: true
