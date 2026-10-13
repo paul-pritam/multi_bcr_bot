@@ -1,8 +1,10 @@
 # Multi-Robot Navigation Stack (bcr_bot)
 
+![Multi-Robot Warehouse Simulation and RViz Navigation](res/multi_robot_demo.png)
+
 Fork of [blackcoffeerobotics/bcr_bot](https://github.com/blackcoffeerobotics/bcr_bot) extended with a **multi-robot simulation and navigation system** on ROS 2 Jazzy + Gazebo Harmonic.
 
-Spawns N differential-drive robots in a shared warehouse environment, each with independent namespaced Nav2 stacks, EKF localization, and AMCL — all launched from a single YAML config.
+Spawns N differential-drive robots in a shared warehouse environment, each with independent namespaced Nav2 stacks, EKF localization, and AMCL; all launched from a single YAML config.
 
 ## What I built
 
@@ -148,10 +150,10 @@ The shared `/map` topic is published once by the map server and consumed by all 
 
 ## Based on
 
-- [blackcoffeerobotics/bcr_bot](https://github.com/blackcoffeerobotics/bcr_bot) — original single-robot simulation
-- [Nav2](https://docs.nav2.org/) — navigation framework
-- [robot_localization](https://github.com/cra-ros-pkg/robot_localization) — EKF sensor fusion
-- [SLAM Toolbox](https://github.com/SteveMacenski/slam_toolbox) — online mapping
+- [blackcoffeerobotics/bcr_bot](https://github.com/blackcoffeerobotics/bcr_bot) - original single-robot simulation
+- [Nav2](https://docs.nav2.org/) - navigation framework
+- [robot_localization](https://github.com/cra-ros-pkg/robot_localization) - EKF sensor fusion
+- [SLAM Toolbox](https://github.com/SteveMacenski/slam_toolbox) - online mapping
 
 ## License
 
