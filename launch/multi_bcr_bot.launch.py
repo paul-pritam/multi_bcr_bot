@@ -60,7 +60,7 @@ def generate_launch_description():
                         'xacro ', os.path.join(bcr_path, 'urdf', 'bcr_bot.xacro'),
                         ' robot_namespace:=', robot_name,
                         ' wheel_odom_topic:=/', robot_name, '/odom',
-                        ' camera_enabled:=', LaunchConfiguration('camera_enabled', default='false'),
+                        ' camera_enabled:=', LaunchConfiguration('camera_enabled', default='true'),
                         ' stereo_camera_enabled:=', LaunchConfiguration('stereo_camera_enabled', default='false'),
                         ' two_d_lidar_enabled:=', LaunchConfiguration('two_d_lidar_enabled', default='true'),
                         ' sim_gz:=true'
@@ -203,7 +203,7 @@ def generate_launch_description():
     return LaunchDescription([
         DeclareLaunchArgument('world_file', default_value=world_file),
         DeclareLaunchArgument('use_sim_time', default_value=use_sim_time),
-        DeclareLaunchArgument('camera_enabled', default_value='false'),
+        DeclareLaunchArgument('camera_enabled', default_value='true'),
         DeclareLaunchArgument('stereo_camera_enabled', default_value='false'),
         DeclareLaunchArgument('two_d_lidar_enabled', default_value='true'),
         DeclareLaunchArgument('robots_config', default_value=robots_config),
