@@ -43,7 +43,16 @@
       use_sim_time: True
       planner_plugins: ["GridBased"]
       GridBased:
-        plugin: "nav2_navfn_planner::NavfnPlanner"
+        plugin: "hybrid_astar/HybridAStarPlanner"
+        turning_radius: 0.6
+        motion_primitive_length: 0.3
+        angular_bins: 72
+        reverse_penalty: 2.0
+        gear_change_penalty: 1.5
+        analytic_expansion_threshold: 3.0
+        analytic_expansion_frequency: 5
+        max_iterations: 60000
+        allow_reverse: true
 
   behavior_server:
     ros__parameters:
