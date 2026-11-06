@@ -37,6 +37,8 @@ class VlaGroundingNode(Node):
         super().__init__('vla_grounding_node')
 
         # Declare parameters
+        if not self.has_parameter('use_sim_time'):
+            self.declare_parameter('use_sim_time', True)
         self.declare_parameter('robot_name', 'bcr_bot_1')
         self.declare_parameter('model_path', '/home/pritam/bcr_ws/src/bcr_bot/models/yolov8s-worldv2.pt')
         self.declare_parameter('device', 'cuda:0')
@@ -73,12 +75,8 @@ class VlaGroundingNode(Node):
         self.tf_buffer = tf2_ros.Buffer()
         self.tf_listener = tf2_ros.TransformListener(self.tf_buffer, self)
 
-        # QoS for sensor data
-        sensor_qos = QoSProfile(
-            reliability=ReliabilityPolicy.BEST_EFFORT,
-            history=HistoryPolicy.KEEP_LAST,
-            depth=1
-        )
+        # Reliable depth 10 QoS ensures instant matching with ros_gz_bridge
+        sensor_qos = 10
 
         # Subscribers
         img_topic = f"/{self.robot_name}/kinect_camera/image"
@@ -139,6 +137,11 @@ class VlaGroundingNode(Node):
         if (now_sec - self.last_process_time) < self.process_interval_sec:
             return
         self.last_process_time = now_sec
+
+        self.get_logger().info(
+            f"VLA Perception: Ingested frame ({msg.width}x{msg.height}), evaluating '{self.current_prompt}'",
+            throttle_duration_sec=3.0
+        )
 
         try:
             cv_img = self.bridge.imgmsg_to_cv2(msg, desired_encoding='bgr8')
@@ -215,18 +218,30 @@ class VlaGroundingNode(Node):
                     status_msg = String()
                     status_msg.data = json.dumps(status_dict)
                     self.status_pub.publish(status_msg)
+                    self.get_logger().info(
+                        f"Grounded '{best_cls_name}' ({best_conf:.2f}) -> Map=({map_target_pt[0]:.2f}, {map_target_pt[1]:.2f}) Dock=({goal_pose.pose.position.x:.2f}, {goal_pose.pose.position.y:.2f})"
+                    )
         else:
             # No target in current view
             cv2.putText(annotated_img, f"Searching: '{self.current_prompt}'", (20, 30),
                         cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 165, 255), 2)
+            if (now_sec - getattr(self, '_last_search_pub', 0.0)) > 2.0:
+                self._last_search_pub = now_sec
+                search_dict = {
+                    "status": "SEARCHING",
+                    "prompt": self.current_prompt
+                }
+                search_msg = String()
+                search_msg.data = json.dumps(search_dict)
+                self.status_pub.publish(search_msg)
 
         # Publish visual telemetry image
         try:
             out_msg = self.bridge.cv2_to_imgmsg(annotated_img, encoding='bgr8')
             out_msg.header = msg.header
             self.annotated_img_pub.publish(out_msg)
-        except Exception:
-            pass
+        except Exception as e:
+            self.get_logger().warn(f"Failed to publish annotated image: {e}")
 
     def estimate_depth_at(self, cx: float, cy: float, shape) -> float:
         """Sample depth from depth image if available, else use focal length geometry."""
@@ -375,7 +390,8 @@ def main(args=None):
         pass
     finally:
         node.destroy_node()
-        rclpy.shutdown()
+        if rclpy.ok():
+            rclpy.shutdown()
 
 
 if __name__ == '__main__':
