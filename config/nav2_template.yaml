@@ -90,6 +90,11 @@
             data_type: "LaserScan"
             clearing: True
             marking: True
+        adaptive_obstacle_layer:
+          plugin: "adaptive_costmap_2d::AdaptiveCostmapLayer"
+          enabled: true
+          topic: "/<ROBOT_NAME>/scan"
+          combination_method: 1
         inflation_layer:
           plugin: "nav2_costmap_2d::InflationLayer"
           inflation_radius: 0.75
@@ -117,6 +122,11 @@
             data_type: "LaserScan"
             clearing: True
             marking: True
+        adaptive_obstacle_layer:
+          plugin: "adaptive_costmap_2d::AdaptiveCostmapLayer"
+          enabled: true
+          topic: "/<ROBOT_NAME>/scan"
+          combination_method: 1
         inflation_layer:
           plugin: "nav2_costmap_2d::InflationLayer"
           inflation_radius: 0.75
