@@ -119,6 +119,7 @@
           plugin: "nav2_costmap_2d::StaticLayer"
           map_subscribe_transient_local: True
           map_topic: "/map"
+          track_unknown_space: False
         obstacle_layer:
           plugin: "nav2_costmap_2d::ObstacleLayer"
           observation_sources: scan
