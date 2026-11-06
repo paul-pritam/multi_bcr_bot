@@ -10,12 +10,12 @@ slam_toolbox:
     ceres_loss_function: None
 
     # ROS Parameters
-    odom_frame: odom
+    odom_frame: bcr_bot_1/odom
     map_frame: map
-    base_frame: base_link
-    scan_topic: /bcr_bot/scan
+    base_frame: bcr_bot_1/base_footprint
+    scan_topic: /bcr_bot_1/scan
     use_map_saver: true
-    mode: localization
+    mode: mapping
 
     # if you'd like to immediately start continuing a map at a given pose
     # or at the dock, but they are mutually exclusive, if pose is given
