@@ -256,34 +256,69 @@ Visualization Manager:
         Durability Policy: Volatile
         History Policy: Keep Last
         Reliability Policy: Reliable
-        Value: ""
+        Value: /map_updates
       Use Timestamp: false
       Value: true
     - Alpha: 0.5
       Class: rviz_default_plugins/Map
       Color Scheme: costmap
       Draw Behind: false
-      Enabled: false
-      Name: Adaptive Costmap
+      Enabled: true
+      Name: Global Costmap
       Topic:
         Depth: 1
         Durability Policy: Transient Local
         Filter size: 10
         History Policy: Keep Last
         Reliability Policy: Reliable
-        Value: /adaptive_map/map
+        Value: /bcr_bot_1/global_costmap/costmap
       Update Topic:
         Depth: 5
         Durability Policy: Volatile
         History Policy: Keep Last
         Reliability Policy: Reliable
-        Value: ""
+        Value: /bcr_bot_1/global_costmap/costmap_updates
       Use Timestamp: false
-      Value: false
+      Value: true
+    - Alpha: 0.6
+      Class: rviz_default_plugins/Map
+      Color Scheme: costmap
+      Draw Behind: false
+      Enabled: true
+      Name: Local Costmap
+      Topic:
+        Depth: 1
+        Durability Policy: Transient Local
+        Filter size: 10
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /bcr_bot_1/local_costmap/costmap
+      Update Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /bcr_bot_1/local_costmap/costmap_updates
+      Use Timestamp: false
       Value: true
     - Class: rviz_default_plugins/MarkerArray
       Enabled: true
-      Name: AdaptiveSparseBlocks
+      Name: Adaptive Multi-Resolution QuadTree LOD
+      Namespaces:
+        adaptive_sparse_wireframes: true
+        adaptive_sparse_tiles: true
+        adaptive_telemetry_hud: true
+      Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        Filter size: 10
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /adaptive_map/sparse_blocks
+      Value: true
+    - Class: rviz_default_plugins/MarkerArray
+      Enabled: false
+      Name: Adaptive Costmap Layer Blocks
       Namespaces:
         adaptive_sparse_wireframes: true
         adaptive_sparse_tiles: true
@@ -294,7 +329,22 @@ Visualization Manager:
         Filter size: 10
         History Policy: Keep Last
         Reliability Policy: Reliable
-        Value: /adaptive_map/sparse_blocks
+        Value: /bcr_bot_1/global_costmap/adaptive_obstacle_layer/sparse_blocks
+      Value: false
+    - Class: rviz_default_plugins/MarkerArray
+      Enabled: true
+      Name: Adaptive Sparse Blocks (Local)
+      Namespaces:
+        adaptive_sparse_wireframes: true
+        adaptive_sparse_tiles: true
+        adaptive_telemetry_hud: false
+      Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        Filter size: 10
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /bcr_bot_1/local_costmap/adaptive_obstacle_layer/sparse_blocks
       Value: true
   Enabled: true
   Global Options:
