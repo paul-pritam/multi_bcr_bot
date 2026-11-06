@@ -60,19 +60,21 @@ def generate_mega_warehouse_sdf(
     sdf.append('      <direction>-0.5 0.1 -0.9</direction>')
     sdf.append('    </light>')
 
-    # Ground Plane
+    # Ground Plane (scaled dynamically to facility dimensions + 100m buffer)
+    gp_size_x = max(250.0, length_x + 100.0)
+    gp_size_y = max(250.0, width_y + 100.0)
     sdf.append('    <model name="ground_plane">')
     sdf.append('      <static>true</static>')
     sdf.append('      <link name="link">')
     sdf.append('        <collision name="collision">')
     sdf.append(
         '          <geometry><plane><normal>0 0 1</normal>'
-        '<size>250 250</size></plane></geometry>')
+        f'<size>{gp_size_x:.1f} {gp_size_y:.1f}</size></plane></geometry>')
     sdf.append('        </collision>')
     sdf.append('        <visual name="visual">')
     sdf.append(
         '          <geometry><plane><normal>0 0 1</normal>'
-        '<size>250 250</size></plane></geometry>')
+        f'<size>{gp_size_x:.1f} {gp_size_y:.1f}</size></plane></geometry>')
     sdf.append('          <material>')
     sdf.append('            <ambient>0.3 0.3 0.35 1</ambient>')
     sdf.append('            <diffuse>0.4 0.4 0.45 1</diffuse>')

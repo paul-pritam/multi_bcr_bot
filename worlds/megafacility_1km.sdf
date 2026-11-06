@@ -1,0 +1,1679 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <world name="mega_warehouse">
+    <physics name="1ms" type="ignored">
+      <max_step_size>0.003</max_step_size>
+      <real_time_factor>1.0</real_time_factor>
+    </physics>
+    <plugin filename="gz-sim-physics-system" name="gz::sim::systems::Physics"></plugin>
+    <plugin filename="gz-sim-user-commands-system" name="gz::sim::systems::UserCommands"></plugin>
+    <plugin filename="gz-sim-scene-broadcaster-system" name="gz::sim::systems::SceneBroadcaster"></plugin>
+    <plugin filename="gz-sim-sensors-system" name="gz::sim::systems::Sensors">
+      <render_engine>ogre2</render_engine>
+    </plugin>
+    <plugin filename="gz-sim-imu-system" name="gz::sim::systems::Imu"></plugin>
+    <scene>
+      <ambient>0.6 0.6 0.6 1.0</ambient>
+      <background>0.15 0.15 0.15 1.0</background>
+      <grid>false</grid>
+    </scene>
+    <light type="directional" name="sun">
+      <cast_shadows>true</cast_shadows>
+      <pose>0 0 30 0 0 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+      <direction>-0.5 0.1 -0.9</direction>
+    </light>
+    <model name="ground_plane">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry><plane><normal>0 0 1</normal><size>600 600</size></plane></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><plane><normal>0 0 1</normal><size>600 600</size></plane></geometry>
+          <material>
+            <ambient>0.3 0.3 0.35 1</ambient>
+            <diffuse>0.4 0.4 0.45 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+    <model name="wall_north">
+      <static>true</static>
+      <pose>0.00 250.00 2.00 0 0 0</pose>
+      <link name="link">
+        <collision name="col">
+          <geometry><box><size>500.00 0.30 4.00</size></box></geometry>
+        </collision>
+        <visual name="vis">
+          <geometry><box><size>500.00 0.30 4.00</size></box></geometry>
+          <material><ambient>0.7 0.7 0.75 1</ambient><diffuse>0.7 0.7 0.75 1</diffuse></material>
+        </visual>
+      </link>
+    </model>
+    <model name="wall_south">
+      <static>true</static>
+      <pose>0.00 -250.00 2.00 0 0 0</pose>
+      <link name="link">
+        <collision name="col">
+          <geometry><box><size>500.00 0.30 4.00</size></box></geometry>
+        </collision>
+        <visual name="vis">
+          <geometry><box><size>500.00 0.30 4.00</size></box></geometry>
+          <material><ambient>0.7 0.7 0.75 1</ambient><diffuse>0.7 0.7 0.75 1</diffuse></material>
+        </visual>
+      </link>
+    </model>
+    <model name="wall_east">
+      <static>true</static>
+      <pose>250.00 0.00 2.00 0 0 0</pose>
+      <link name="link">
+        <collision name="col">
+          <geometry><box><size>0.30 500.00 4.00</size></box></geometry>
+        </collision>
+        <visual name="vis">
+          <geometry><box><size>0.30 500.00 4.00</size></box></geometry>
+          <material><ambient>0.7 0.7 0.75 1</ambient><diffuse>0.7 0.7 0.75 1</diffuse></material>
+        </visual>
+      </link>
+    </model>
+    <model name="wall_west">
+      <static>true</static>
+      <pose>-250.00 0.00 2.00 0 0 0</pose>
+      <link name="link">
+        <collision name="col">
+          <geometry><box><size>0.30 500.00 4.00</size></box></geometry>
+        </collision>
+        <visual name="vis">
+          <geometry><box><size>0.30 500.00 4.00</size></box></geometry>
+          <material><ambient>0.7 0.7 0.75 1</ambient><diffuse>0.7 0.7 0.75 1</diffuse></material>
+        </visual>
+      </link>
+    </model>
+    <model name="shelf_0001">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>-45.00 -30.60 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0002">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>-42.90 -30.60 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0003">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>-40.80 -30.60 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0004">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>-38.70 -30.60 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0005">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>-36.60 -30.60 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0006">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>-34.50 -30.60 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0007">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>-32.40 -30.60 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0008">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>-30.30 -30.60 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0009">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>-18.00 -30.60 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0010">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>-15.90 -30.60 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0011">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>-13.80 -30.60 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0012">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>-11.70 -30.60 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0013">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>-9.60 -30.60 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0014">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>-7.50 -30.60 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0015">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>-5.40 -30.60 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0016">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>-3.30 -30.60 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0017">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>10.00 -30.60 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0018">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>12.10 -30.60 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0019">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>14.20 -30.60 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0020">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>16.30 -30.60 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0021">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>18.40 -30.60 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0022">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>20.50 -30.60 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0023">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>22.60 -30.60 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0024">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>24.70 -30.60 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0025">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>-45.00 -29.40 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0026">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>-42.90 -29.40 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0027">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>-40.80 -29.40 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0028">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>-38.70 -29.40 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0029">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>-36.60 -29.40 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0030">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>-34.50 -29.40 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0031">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>-32.40 -29.40 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0032">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>-30.30 -29.40 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0033">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>-18.00 -29.40 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0034">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>-15.90 -29.40 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0035">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>-13.80 -29.40 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0036">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>-11.70 -29.40 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0037">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>-9.60 -29.40 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0038">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>-7.50 -29.40 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0039">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>-5.40 -29.40 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0040">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>-3.30 -29.40 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0041">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>10.00 -29.40 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0042">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>12.10 -29.40 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0043">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>14.20 -29.40 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0044">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>16.30 -29.40 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0045">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>18.40 -29.40 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0046">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>20.50 -29.40 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0047">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>22.60 -29.40 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0048">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>24.70 -29.40 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0049">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>-45.00 -22.60 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0050">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>-42.90 -22.60 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0051">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>-40.80 -22.60 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0052">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>-38.70 -22.60 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0053">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>-36.60 -22.60 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0054">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>-34.50 -22.60 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0055">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>-32.40 -22.60 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0056">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>-30.30 -22.60 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0057">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>-18.00 -22.60 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0058">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>-15.90 -22.60 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0059">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>-13.80 -22.60 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0060">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>-11.70 -22.60 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0061">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>-9.60 -22.60 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0062">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>-7.50 -22.60 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0063">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>-5.40 -22.60 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0064">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>-3.30 -22.60 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0065">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>10.00 -22.60 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0066">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>12.10 -22.60 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0067">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>14.20 -22.60 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0068">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>16.30 -22.60 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0069">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>18.40 -22.60 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0070">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>20.50 -22.60 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0071">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>22.60 -22.60 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0072">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>24.70 -22.60 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0073">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>-45.00 -21.40 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0074">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>-42.90 -21.40 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0075">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>-40.80 -21.40 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0076">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>-38.70 -21.40 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0077">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>-36.60 -21.40 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0078">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>-34.50 -21.40 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0079">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>-32.40 -21.40 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0080">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>-30.30 -21.40 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0081">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>-18.00 -21.40 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0082">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>-15.90 -21.40 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0083">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>-13.80 -21.40 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0084">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>-11.70 -21.40 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0085">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>-9.60 -21.40 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0086">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>-7.50 -21.40 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0087">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>-5.40 -21.40 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0088">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>-3.30 -21.40 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0089">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>10.00 -21.40 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0090">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>12.10 -21.40 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0091">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>14.20 -21.40 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0092">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>16.30 -21.40 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0093">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>18.40 -21.40 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0094">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>20.50 -21.40 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0095">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>22.60 -21.40 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0096">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>24.70 -21.40 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0097">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>-45.00 -14.60 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0098">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>-42.90 -14.60 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0099">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>-40.80 -14.60 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0100">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>-38.70 -14.60 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0101">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>-36.60 -14.60 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0102">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>-34.50 -14.60 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0103">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>-32.40 -14.60 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0104">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>-30.30 -14.60 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0105">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>-18.00 -14.60 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0106">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>-15.90 -14.60 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0107">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>-13.80 -14.60 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0108">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>-11.70 -14.60 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0109">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>-9.60 -14.60 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0110">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>-7.50 -14.60 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0111">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>-5.40 -14.60 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0112">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>-3.30 -14.60 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0113">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>10.00 -14.60 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0114">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>12.10 -14.60 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0115">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>14.20 -14.60 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0116">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>16.30 -14.60 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0117">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>18.40 -14.60 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0118">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>20.50 -14.60 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0119">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>22.60 -14.60 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0120">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>24.70 -14.60 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0121">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>-45.00 -13.40 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0122">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>-42.90 -13.40 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0123">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>-40.80 -13.40 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0124">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>-38.70 -13.40 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0125">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>-36.60 -13.40 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0126">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>-34.50 -13.40 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0127">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>-32.40 -13.40 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0128">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>-30.30 -13.40 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0129">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>-18.00 -13.40 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0130">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>-15.90 -13.40 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0131">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>-13.80 -13.40 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0132">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>-11.70 -13.40 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0133">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>-9.60 -13.40 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0134">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>-7.50 -13.40 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0135">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>-5.40 -13.40 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0136">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>-3.30 -13.40 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0137">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>10.00 -13.40 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0138">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>12.10 -13.40 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0139">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>14.20 -13.40 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0140">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>16.30 -13.40 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0141">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>18.40 -13.40 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0142">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>20.50 -13.40 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0143">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>22.60 -13.40 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0144">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>24.70 -13.40 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0145">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>-45.00 -6.60 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0146">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>-42.90 -6.60 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0147">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>-40.80 -6.60 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0148">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>-38.70 -6.60 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0149">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>-36.60 -6.60 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0150">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>-34.50 -6.60 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0151">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>-32.40 -6.60 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0152">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>-30.30 -6.60 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0153">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>-18.00 -6.60 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0154">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>-15.90 -6.60 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0155">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>-13.80 -6.60 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0156">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>-11.70 -6.60 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0157">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>-9.60 -6.60 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0158">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>-7.50 -6.60 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0159">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>-5.40 -6.60 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0160">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>-3.30 -6.60 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0161">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>10.00 -6.60 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0162">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>12.10 -6.60 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0163">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>14.20 -6.60 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0164">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>16.30 -6.60 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0165">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>18.40 -6.60 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0166">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>20.50 -6.60 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0167">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>22.60 -6.60 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0168">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>24.70 -6.60 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0169">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>-45.00 -5.40 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0170">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>-42.90 -5.40 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0171">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>-40.80 -5.40 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0172">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>-38.70 -5.40 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0173">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>-36.60 -5.40 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0174">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>-34.50 -5.40 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0175">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>-32.40 -5.40 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0176">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>-30.30 -5.40 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0177">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>-18.00 -5.40 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0178">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>-15.90 -5.40 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0179">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>-13.80 -5.40 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0180">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>-11.70 -5.40 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0181">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>-9.60 -5.40 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0182">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>-7.50 -5.40 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0183">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>-5.40 -5.40 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0184">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>-3.30 -5.40 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0185">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>10.00 -5.40 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0186">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>12.10 -5.40 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0187">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>14.20 -5.40 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0188">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>16.30 -5.40 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0189">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>18.40 -5.40 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0190">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>20.50 -5.40 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0191">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>22.60 -5.40 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0192">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>24.70 -5.40 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0193">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>-45.00 5.40 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0194">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>-42.90 5.40 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0195">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>-40.80 5.40 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0196">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>-38.70 5.40 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0197">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>-36.60 5.40 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0198">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>-34.50 5.40 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0199">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>-32.40 5.40 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0200">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>-30.30 5.40 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0201">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>-18.00 5.40 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0202">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>-15.90 5.40 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0203">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>-13.80 5.40 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0204">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>-11.70 5.40 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0205">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>-9.60 5.40 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0206">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>-7.50 5.40 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0207">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>-5.40 5.40 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0208">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>-3.30 5.40 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0209">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>10.00 5.40 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0210">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>12.10 5.40 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0211">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>14.20 5.40 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0212">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>16.30 5.40 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0213">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>18.40 5.40 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0214">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>20.50 5.40 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0215">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>22.60 5.40 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0216">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>24.70 5.40 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0217">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>-45.00 6.60 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0218">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>-42.90 6.60 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0219">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>-40.80 6.60 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0220">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>-38.70 6.60 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0221">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>-36.60 6.60 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0222">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>-34.50 6.60 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0223">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>-32.40 6.60 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0224">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>-30.30 6.60 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0225">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>-18.00 6.60 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0226">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>-15.90 6.60 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0227">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>-13.80 6.60 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0228">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>-11.70 6.60 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0229">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>-9.60 6.60 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0230">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>-7.50 6.60 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0231">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>-5.40 6.60 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0232">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>-3.30 6.60 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0233">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>10.00 6.60 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0234">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>12.10 6.60 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0235">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>14.20 6.60 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0236">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>16.30 6.60 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0237">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>18.40 6.60 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0238">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>20.50 6.60 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0239">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>22.60 6.60 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0240">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>24.70 6.60 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0241">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>-45.00 13.40 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0242">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>-42.90 13.40 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0243">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>-40.80 13.40 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0244">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>-38.70 13.40 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0245">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>-36.60 13.40 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0246">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>-34.50 13.40 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0247">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>-32.40 13.40 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0248">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>-30.30 13.40 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0249">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>-18.00 13.40 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0250">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>-15.90 13.40 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0251">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>-13.80 13.40 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0252">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>-11.70 13.40 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0253">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>-9.60 13.40 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0254">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>-7.50 13.40 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0255">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>-5.40 13.40 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0256">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>-3.30 13.40 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0257">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>10.00 13.40 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0258">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>12.10 13.40 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0259">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>14.20 13.40 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0260">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>16.30 13.40 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0261">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>18.40 13.40 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0262">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>20.50 13.40 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0263">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>22.60 13.40 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0264">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>24.70 13.40 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0265">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>-45.00 14.60 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0266">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>-42.90 14.60 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0267">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>-40.80 14.60 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0268">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>-38.70 14.60 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0269">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>-36.60 14.60 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0270">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>-34.50 14.60 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0271">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>-32.40 14.60 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0272">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>-30.30 14.60 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0273">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>-18.00 14.60 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0274">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>-15.90 14.60 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0275">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>-13.80 14.60 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0276">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>-11.70 14.60 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0277">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>-9.60 14.60 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0278">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>-7.50 14.60 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0279">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>-5.40 14.60 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0280">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>-3.30 14.60 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0281">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>10.00 14.60 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0282">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>12.10 14.60 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0283">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>14.20 14.60 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0284">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>16.30 14.60 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0285">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>18.40 14.60 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0286">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>20.50 14.60 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0287">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>22.60 14.60 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0288">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>24.70 14.60 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0289">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>-45.00 21.40 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0290">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>-42.90 21.40 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0291">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>-40.80 21.40 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0292">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>-38.70 21.40 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0293">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>-36.60 21.40 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0294">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>-34.50 21.40 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0295">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>-32.40 21.40 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0296">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>-30.30 21.40 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0297">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>-18.00 21.40 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0298">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>-15.90 21.40 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0299">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>-13.80 21.40 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0300">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>-11.70 21.40 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0301">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>-9.60 21.40 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0302">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>-7.50 21.40 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0303">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>-5.40 21.40 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0304">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>-3.30 21.40 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0305">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>10.00 21.40 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0306">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>12.10 21.40 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0307">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>14.20 21.40 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0308">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>16.30 21.40 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0309">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>18.40 21.40 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0310">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>20.50 21.40 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0311">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>22.60 21.40 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0312">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>24.70 21.40 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0313">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>-45.00 22.60 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0314">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>-42.90 22.60 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0315">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>-40.80 22.60 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0316">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>-38.70 22.60 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0317">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>-36.60 22.60 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0318">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>-34.50 22.60 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0319">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>-32.40 22.60 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0320">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>-30.30 22.60 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0321">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>-18.00 22.60 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0322">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>-15.90 22.60 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0323">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>-13.80 22.60 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0324">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>-11.70 22.60 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0325">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>-9.60 22.60 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0326">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>-7.50 22.60 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0327">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>-5.40 22.60 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0328">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>-3.30 22.60 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0329">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>10.00 22.60 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0330">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>12.10 22.60 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0331">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>14.20 22.60 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0332">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>16.30 22.60 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0333">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>18.40 22.60 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0334">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>20.50 22.60 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0335">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>22.60 22.60 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0336">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>24.70 22.60 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0337">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>-45.00 29.40 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0338">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>-42.90 29.40 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0339">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>-40.80 29.40 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0340">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>-38.70 29.40 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0341">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>-36.60 29.40 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0342">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>-34.50 29.40 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0343">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>-32.40 29.40 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0344">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>-30.30 29.40 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0345">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>-18.00 29.40 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0346">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>-15.90 29.40 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0347">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>-13.80 29.40 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0348">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>-11.70 29.40 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0349">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>-9.60 29.40 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0350">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>-7.50 29.40 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0351">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>-5.40 29.40 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0352">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>-3.30 29.40 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0353">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>10.00 29.40 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0354">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>12.10 29.40 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0355">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>14.20 29.40 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0356">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>16.30 29.40 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0357">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>18.40 29.40 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0358">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>20.50 29.40 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0359">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>22.60 29.40 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0360">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>24.70 29.40 0 0 0 3.1416</pose>
+    </model>
+    <model name="shelf_0361">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>-45.00 30.60 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0362">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>-42.90 30.60 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0363">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>-40.80 30.60 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0364">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>-38.70 30.60 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0365">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>-36.60 30.60 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0366">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>-34.50 30.60 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0367">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>-32.40 30.60 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0368">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>-30.30 30.60 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0369">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>-18.00 30.60 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0370">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>-15.90 30.60 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0371">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>-13.80 30.60 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0372">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>-11.70 30.60 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0373">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>-9.60 30.60 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0374">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>-7.50 30.60 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0375">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>-5.40 30.60 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0376">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>-3.30 30.60 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0377">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>10.00 30.60 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0378">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>12.10 30.60 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0379">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>14.20 30.60 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0380">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>16.30 30.60 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0381">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>18.40 30.60 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0382">
+      <include><uri>model://aws_robomaker_warehouse_ShelfE_01</uri></include>
+      <pose>20.50 30.60 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0383">
+      <include><uri>model://aws_robomaker_warehouse_ShelfF_01</uri></include>
+      <pose>22.60 30.60 0 0 0 0.0000</pose>
+    </model>
+    <model name="shelf_0384">
+      <include><uri>model://aws_robomaker_warehouse_ShelfD_01</uri></include>
+      <pose>24.70 30.60 0 0 0 0.0000</pose>
+    </model>
+    <model name="staging_west_1">
+      <include><uri>model://aws_robomaker_warehouse_ClutteringA_01</uri></include>
+      <pose>-52.0 -25.00 0 0 0 1.5708</pose>
+    </model>
+    <model name="staging_west_2">
+      <include><uri>model://aws_robomaker_warehouse_ClutteringC_01</uri></include>
+      <pose>-52.0 -15.00 0 0 0 1.5708</pose>
+    </model>
+    <model name="staging_west_3">
+      <include><uri>model://aws_robomaker_warehouse_ClutteringD_01</uri></include>
+      <pose>-52.0 -5.00 0 0 0 1.5708</pose>
+    </model>
+    <model name="staging_west_4">
+      <include><uri>model://aws_robomaker_warehouse_PalletJackB_01</uri></include>
+      <pose>-52.0 5.00 0 0 0 1.5708</pose>
+    </model>
+    <model name="staging_west_5">
+      <include><uri>model://aws_robomaker_warehouse_ClutteringA_01</uri></include>
+      <pose>-52.0 15.00 0 0 0 1.5708</pose>
+    </model>
+    <model name="staging_west_6">
+      <include><uri>model://aws_robomaker_warehouse_ClutteringC_01</uri></include>
+      <pose>-52.0 25.00 0 0 0 1.5708</pose>
+    </model>
+    <model name="staging_east_1">
+      <include><uri>model://aws_robomaker_warehouse_ClutteringD_01</uri></include>
+      <pose>52.0 -25.00 0 0 0 -1.5708</pose>
+    </model>
+    <model name="staging_east_2">
+      <include><uri>model://aws_robomaker_warehouse_PalletJackB_01</uri></include>
+      <pose>52.0 -15.00 0 0 0 -1.5708</pose>
+    </model>
+    <model name="staging_east_3">
+      <include><uri>model://aws_robomaker_warehouse_ClutteringA_01</uri></include>
+      <pose>52.0 -5.00 0 0 0 -1.5708</pose>
+    </model>
+    <model name="staging_east_4">
+      <include><uri>model://aws_robomaker_warehouse_ClutteringC_01</uri></include>
+      <pose>52.0 5.00 0 0 0 -1.5708</pose>
+    </model>
+    <model name="staging_east_5">
+      <include><uri>model://aws_robomaker_warehouse_ClutteringD_01</uri></include>
+      <pose>52.0 15.00 0 0 0 -1.5708</pose>
+    </model>
+    <model name="staging_east_6">
+      <include><uri>model://aws_robomaker_warehouse_PalletJackB_01</uri></include>
+      <pose>52.0 25.00 0 0 0 -1.5708</pose>
+    </model>
+  </world>
+</sdf>
