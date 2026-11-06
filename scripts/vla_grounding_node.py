@@ -106,8 +106,20 @@ class VlaGroundingNode(Node):
         if not prompt_clean:
             return
         self.current_prompt = prompt_clean
-        # Add prompt and contextual synonyms for optimal open-vocabulary grounding
-        classes = [self.current_prompt, "shelf", "box", "pallet", "barrel"]
+        # Add contrastive background anchors so CLIP softmax produces sharp object activations
+        classes = [
+            self.current_prompt,
+            f"{self.current_prompt} rack",
+            f"{self.current_prompt} shelf",
+            "storage rack",
+            "shelf",
+            "pallet",
+            "cardboard box",
+            "box",
+            "barrel",
+            "floor",
+            "wall"
+        ]
         self.get_logger().info(f"Updating open-vocabulary classes to: {classes}")
         self.model.set_classes(classes)
 
@@ -165,6 +177,10 @@ class VlaGroundingNode(Node):
                 cls_id = int(box.cls[0].item())
                 conf = float(box.conf[0].item())
                 cls_name = results.names[cls_id]
+
+                # Ignore background contrastive anchors
+                if cls_name in ["floor", "wall"]:
+                    continue
 
                 # Match primary prompt or highest confidence valid object
                 if (cls_name == self.current_prompt or cls_id == 0) and conf > best_conf:
@@ -235,10 +251,15 @@ class VlaGroundingNode(Node):
                 search_msg.data = json.dumps(search_dict)
                 self.status_pub.publish(search_msg)
 
-        # Publish visual telemetry image
+        # Publish visual telemetry image (pure Python serialization)
         try:
-            out_msg = self.bridge.cv2_to_imgmsg(annotated_img, encoding='bgr8')
+            out_msg = Image()
             out_msg.header = msg.header
+            out_msg.height, out_msg.width = annotated_img.shape[:2]
+            out_msg.encoding = 'bgr8'
+            out_msg.is_bigendian = 0
+            out_msg.step = out_msg.width * 3
+            out_msg.data = annotated_img.tobytes()
             self.annotated_img_pub.publish(out_msg)
         except Exception as e:
             self.get_logger().warn(f"Failed to publish annotated image: {e}")
@@ -299,12 +320,15 @@ class VlaGroundingNode(Node):
                 self.map_frame,
                 self.optical_frame,
                 rclpy.time.Time(),
-                timeout=Duration(seconds=0.08)
+                timeout=Duration(seconds=0.20)
             )
             pt_map = do_transform_point(pt_opt, transform)
             return (pt_map.point.x, pt_map.point.y, pt_map.point.z)
         except Exception as e:
-            self.get_logger().debug(f"TF lookup failed from {self.optical_frame} to {self.map_frame}: {e}")
+            self.get_logger().warn(
+                f"TF lookup failed from {self.optical_frame} to {self.map_frame}: {e}",
+                throttle_duration_sec=3.0
+            )
             return None
 
     def compute_standoff_goal(self, target_pt):
@@ -317,11 +341,15 @@ class VlaGroundingNode(Node):
                 self.map_frame,
                 self.base_frame,
                 rclpy.time.Time(),
-                timeout=Duration(seconds=0.08)
+                timeout=Duration(seconds=0.20)
             )
             rx = tf_robot.transform.translation.x
             ry = tf_robot.transform.translation.y
-        except Exception:
+        except Exception as e:
+            self.get_logger().warn(
+                f"TF robot base lookup failed: {e}",
+                throttle_duration_sec=3.0
+            )
             return None
 
         dx = tx - rx
