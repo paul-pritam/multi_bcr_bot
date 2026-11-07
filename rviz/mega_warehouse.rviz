@@ -259,10 +259,10 @@ Visualization Manager:
         Value: /map_updates
       Use Timestamp: false
       Value: true
-    - Alpha: 0.5
+    - Alpha: 0.35
       Class: rviz_default_plugins/Map
       Color Scheme: costmap
-      Draw Behind: false
+      Draw Behind: true
       Enabled: true
       Name: Global Costmap
       Topic:
@@ -280,10 +280,10 @@ Visualization Manager:
         Value: /bcr_bot_1/global_costmap/costmap_updates
       Use Timestamp: false
       Value: true
-    - Alpha: 0.6
+    - Alpha: 0.4
       Class: rviz_default_plugins/Map
       Color Scheme: costmap
-      Draw Behind: false
+      Draw Behind: true
       Enabled: true
       Name: Local Costmap
       Topic:
@@ -332,7 +332,7 @@ Visualization Manager:
         Value: /bcr_bot_1/global_costmap/adaptive_obstacle_layer/sparse_blocks
       Value: false
     - Class: rviz_default_plugins/MarkerArray
-      Enabled: true
+      Enabled: false
       Name: Adaptive Sparse Blocks (Local)
       Namespaces:
         adaptive_sparse_wireframes: true
@@ -345,7 +345,7 @@ Visualization Manager:
         History Policy: Keep Last
         Reliability Policy: Reliable
         Value: /bcr_bot_1/local_costmap/adaptive_obstacle_layer/sparse_blocks
-      Value: true
+      Value: false
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
@@ -393,8 +393,8 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Scale: 10.0
-      Target Frame: <Fixed Frame>
+      Scale: 12.0
+      Target Frame: bcr_bot_1/base_link
       Value: TopDownOrtho (rviz_default_plugins)
       X: 0
       Y: 0
